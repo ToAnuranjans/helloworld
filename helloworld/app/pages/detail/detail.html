@@ -1,0 +1,35 @@
+<ion-navbar *navbar secondary>
+  <ion-title>{{resource.name}}</ion-title>
+</ion-navbar>
+<ion-content class="card-background-page">
+  <ion-card>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img [src]="resource.imageUrl">
+        </ion-thumbnail>
+        <h1>{{resource.name}}</h1>
+        <!--<p> <b> {{resource.skill.name}} </b> • {{resource.experience}} Years</p>-->
+        <h2>Location Service Provider</h2>
+      </ion-item>
+      <ion-item clear item-right>
+        <p>
+          Mobile :{{resource.mobile}}
+        </p>
+
+        <p item-right clear>
+          <a href="tel:{{resource.mobile}}" class="button button-secondary" style=" padding:0.5em 1.1em;">Call  <ion-icon  name="call"></ion-icon></a>
+        </p>
+      </ion-item>
+      <!--<ion-item text-wrap>
+        <p>
+          Address : {{resource.address}}
+        </p>
+      </ion-item>-->
+      <ion-item text-wrap>
+        <b>Experience Summary:</b> {{resource.experienceSummary}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+

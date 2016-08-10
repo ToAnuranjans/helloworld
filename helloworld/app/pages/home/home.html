@@ -1,0 +1,27 @@
+<ion-navbar *navbar secondary>
+  <ion-title>Connect to a facilitator</ion-title>
+</ion-navbar>
+<ion-content fullscreen="true">
+  <ion-list>
+    <button ion-item detail-push *ngFor="#resource of resources" (click)="displayDetails($event,resource)">
+      <ion-thumbnail item-left>
+        <img [src]="resource.imageUrl">
+      </ion-thumbnail>      
+      <h1>{{resource.name}}</h1>
+      <!--<p> <b> {{resource.skill.name}} </b> • {{resource.experience}} Years</p>-->
+      <h2>Location Service Provider</h2>
+       <ion-icon name="arrow-forward" item-right></ion-icon>
+    </button>
+    <ion-item text-wrap [hidden]="anyResourceAvailable">
+      <h2>No resource found for selected location. Sorry for the inconvenience caused. Kindly search for other locations.</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-buttons>
+    <button class="button"  large style="text-align:center;text-transform:none;" (click)="addUser()">
+         <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+         Add a Facilitator
+        </button>
+  </ion-buttons>
+</ion-footer>

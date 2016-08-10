@@ -1,0 +1,49 @@
+<ion-navbar *navbar secondary>
+    <ion-title>Hello World!</ion-title>
+</ion-navbar>
+<ion-list>
+    <ion-item>
+        <ion-label>Select Country</ion-label>
+        <ion-select name="country" id="country" (change)="selectCounty($event)" okText="Okay" cancelText="Dismiss" [(ngModel)]="selectedCountry">
+            <ion-option [value]="selectedCountry" *ngFor="#country of countries" selected>{{selectedCountry}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select State</ion-label>
+        <ion-spinner item-right name="circles" [hidden]="states.length>0"></ion-spinner>
+        <ion-select name="state" id="state" [(ngModel)]="selectedState" (change)="selectState($event)" [disabled]="!(states.length>0)"
+            okText="Okay" cancelText="Dismiss">
+            <ion-option [value]="state.id" *ngFor="#state of states">{{state.stateName}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select City</ion-label>
+        <ion-spinner item-right name="circles" *ngIf="selectedState" [hidden]="cities.length > 0"></ion-spinner>
+        <ion-select name="city" id="city" [(ngModel)]="selectedCity" (change)="selectCity($event)" [disabled]="!(cities.length > 0)"
+            okText="Okay" cancelText="Dismiss">
+            <ion-option [value]="city.id" *ngFor="#city of cities">{{city.districtName}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Location</ion-label>
+        <ion-spinner item-right name="circles" *ngIf="selectedCity" [hidden]="localities.length > 0"></ion-spinner>
+        <ion-select name="location" id="location" [(ngModel)]="selectedLocation" [disabled]="!(localities.length > 0)" (change)="selectLocation($event)"
+            okText="Okay" cancelText="Dismiss">
+            <ion-option [value]="locality.id" *ngFor="#locality of localities">{{locality.areaName}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <!--<ion-item>
+        <ion-label>Type of Skill</ion-label>
+        <ion-spinner item-right name="circles" [hidden]="skills.length>0"></ion-spinner>
+        <ion-select name="skil" id="skill" [(ngModel)]="selectedSkill" (change)="selectSkill($event)" okText="Okay" cancelText="Dismiss"
+            [disabled]="skills.length<0">
+            <ion-option [value]="skil.id" *ngFor="#skil of skills">{{skil.name}}</ion-option>
+        </ion-select>
+    </ion-item>-->
+  
+    <button class="button" full large style="text-align:center;text-transform: none;width:200px;border-radius:5px;margin-left:25%;"
+        [disabled]="!selectedLocation" (click)="NavigateToHome()">
+         <ion-icon name="search"></ion-icon>
+         Search
+   </button>
+</ion-list>
